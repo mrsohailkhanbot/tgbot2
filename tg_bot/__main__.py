@@ -28,7 +28,7 @@ If you're enjoying using me, and/or would like to help me survive in the wild, h
 """
 
 SOURCE_STRING = """
-I'm built in python3, using the python-telegram-bot library, and am fully opensource - you can find what makes me tick [here](https://github.com/corsicanu/tgbot)
+I'm built in python3, using the python-telegram-bot library, and am fully opensource - you can find what makes me tick [here](https://github.com/sahyam2019/tgbot)
 """
 
 HELP_STRINGS = """
@@ -374,10 +374,7 @@ def donate(bot: Bot, update: Update):
     if chat.type == "private":
         update.effective_message.reply_text(DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
-        update.effective_message.reply_text("You can also donate to my creator, SonOfLars, for all his work to get me where i am now. There are two ways of paying him: [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen).",
-                                                parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-
-    else:
+      else:
         try:
             bot.send_message(user.id, DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
