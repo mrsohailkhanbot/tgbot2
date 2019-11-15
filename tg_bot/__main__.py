@@ -19,9 +19,11 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-Hello {}, my name is *{}*! I'm a group manager bot.
-
+Hello {}, my name is {}!
+I'm a group manager bot maintained by [this wonderful person](tg://user?id={}). I'm built in python3 using the python-telegram-bot library with not many changes. ;-)
 You can find the list of available commands with /help.
+[Click here to add me in your groups](https://telegram.me/MilliesBot?startgroup=add)
+If you're enjoying using me, and/or would like to help me survive in the wild, hit /donate to help fund/upgrade my VPS!
 """
 
 SOURCE_STRING = """
@@ -37,7 +39,6 @@ the things I can help you with.
  - /help: PM's you this message.
  - /help <module name>: PM's you info about that module.
  - /donate: info about how to donate
- - /source: info about my sourcecode
  - /settings:
    - in PM: will send you your settings for all supported modules.
    - in a group: will redirect you to pm, with all that chat's settings.
@@ -46,7 +47,7 @@ Other available commands:
 """.format("" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
 DONATE_STRING = """Nice that you wanna donate. \
-You can send a donation to my current maintainers via [PayPal](paypal.me/corsicanu) and [PayPal](paypal.me/nunopenim)."""
+You can donate me here [Telegram](t.me/heyworld)."""
 
 IMPORTED = {}
 MIGRATEABLE = []
