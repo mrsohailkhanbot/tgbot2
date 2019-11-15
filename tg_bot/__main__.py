@@ -373,7 +373,7 @@ def donate(bot: Bot, update: Update):
 
     if chat.type == "private":
         update.effective_message.reply_text(DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-     else:
+    else:
         try:
             bot.send_message(user.id, DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
