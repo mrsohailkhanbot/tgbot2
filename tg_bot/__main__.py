@@ -388,6 +388,10 @@ def source(bot: Bot, update: Update):
 
     if chat.type == "private":
         update.effective_message.reply_text(SOURCE_STRING, parse_mode=ParseMode.MARKDOWN)
+	
+	update.effective_message.reply_text(" a small donation can help my bot to run forever).",
+                                                parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+
 
     else:
         try:
