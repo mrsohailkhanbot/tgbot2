@@ -325,8 +325,12 @@ BAN_HANDLER = CommandHandler("ban", ban, pass_args=True, filters=Filters.group)
 TEMPBAN_HANDLER = CommandHandler(["tban", "tempban"], temp_ban, pass_args=True, filters=Filters.group)
 KICK_HANDLER = CommandHandler("kick", kick, pass_args=True, filters=Filters.group)
 UNBAN_HANDLER = CommandHandler("unban", unban, pass_args=True, filters=Filters.group)
-KICKME_HANDLER = DisableAbleCommandHandler("kickme", kickme, filters=Filters.group)
-RIPME_HANDLER = DisableAbleCommandHandler("rip", kickme, filters=Filters.group)
+KICKME_HANDLER = CommandHandler("kickme", kickme, filters=Filters.group)
+RIPME_HANDLER = CommandHandler("rip", kickme, filters=Filters.group)
+
+
+BANME_HANDLER = CommandHandler("banme", banme, filters=Filters.group)
+
 
 
 
