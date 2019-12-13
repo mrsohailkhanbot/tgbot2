@@ -535,7 +535,7 @@ An "odds and ends" module for small, simple commands which don't really fit anyw
  - /markdownhelp: quick summary of how markdown works in telegram - can only be called in private chats.
 """
 
-__mod_name__ = "Misc"
+__mod_name__ = "Special"
 
 ID_HANDLER = DisableAbleCommandHandler("id", get_id, pass_args=True)
 
