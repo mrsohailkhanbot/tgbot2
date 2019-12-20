@@ -34,7 +34,7 @@ def check_flood(bot: Bot, update: Update) -> str:
         return ""
     
     soft_flood = sql.get_flood_strength(chat.id)
-    if soft_flood:  # kick
+    if soft_flood:  # mute
         chat.unban_member(user.id)
         reply = "Wonderful, I don't like your flooding. Get out! {} has been kicked!".format(mention_html(user.id, user.first_name))
 
