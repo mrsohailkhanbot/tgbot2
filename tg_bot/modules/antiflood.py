@@ -1,4 +1,5 @@
 import html
+import time
 from typing import Optional, List
 
 from telegram import Message, Chat, Update, Bot, User, ParseMode, InlineKeyboardButton, InlineKeyboardMarkup
@@ -38,8 +39,8 @@ def check_flood(bot: Bot, update: Update) -> str:
         chat.unban_member(user.id)
         reply = "Wonderful, I don't like your flooding. Get out! {} has been kicked!".format(mention_html(user.id, user.first_name))
 
-    else:  # ban
-        chat.kick_member(user.id)
+    else:  #tmute        
+        bot.restrict_chat_member(chat.id, user.id, can_send_messages=False, until_date=(int(time.time() + 6 * 60)))
         reply = "Frankly, I like to leave the flooding to natural disasters. {} has been banned!".format(mention_html(user.id, user.first_name))
     try:
         keyboard = []
