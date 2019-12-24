@@ -41,7 +41,7 @@ def check_flood(bot: Bot, update: Update) -> str:
 
     else:  #tmute        
         bot.restrict_chat_member(chat.id, user.id, can_send_messages=False, until_date=(int(time.time() + 6 * 60)))
-        reply = "Frankly, I like to leave the flooding to natural disasters. {} has been banned!".format(mention_html(user.id, user.first_name))
+        reply = "Frankly, I like to leave the flooding to natural disasters. {} has been muted!".format(mention_html(user.id, user.first_name))
     try:
         keyboard = []
         msg.reply_text(reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
