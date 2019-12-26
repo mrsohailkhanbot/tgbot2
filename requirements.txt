@@ -10,4 +10,8 @@ geopy
 speedtest-cli>=2.0.2
 bs4
 lxml
+aiohttp>=2.2.5
+Pillow>=4.2.0
+pythonping
+geopy
 
