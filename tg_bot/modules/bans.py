@@ -43,7 +43,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
             raise
 
     if is_user_ban_protected(chat, user_id, member):
-        message.reply_text("Can't do that, user is admin..")
+        message.reply_text("Chutiya hai kya?..")
         return ""
 
     if user_id == bot.id:
@@ -64,14 +64,14 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
         chat.kick_member(user_id)
         keyboard = []
         bot.send_sticker(update.effective_chat.id, BAN_STICKER)  # banhammer marie sticker
-        reply = "{} has been banned!".format(mention_html(member.user.id, member.user.first_name))
+        reply = "{} has been fucked successfully!".format(mention_html(member.user.id, member.user.first_name))
         message.reply_text(reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
         return log
 
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text('Banned!', quote=False)
+            message.reply_text('Congratulations user is fucked !', quote=False)
             return log
         else:
             LOGGER.warning(update)
