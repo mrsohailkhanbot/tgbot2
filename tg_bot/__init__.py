@@ -120,4 +120,29 @@ from tg_bot.modules.helper_funcs.handlers import CustomCommandHandler, CustomReg
 tg.RegexHandler = CustomRegexHandler
 
 if ALLOW_EXCL:
-    tg.CommandHandler = CustomCommandHandler
+	tg.CommandHandler = CustomCommandHandler
+
+# Disable this (line 151) if you dont have a antispam script
+#try:
+	from emilia.antispam import antispam_restrict_user, antispam_cek_user, detect_user
+	antispam_module = True
+except ModuleNotFoundError:
+	antispam_module = False
+	LOGGER.info("Note: Can't load antispam module. This is an optional.")
+
+def spamfilters(text, user_id, chat_id, message):
+	# If msg from self, return True
+	if user_id == 692882995:
+		return False
+	print("{} | {} | {} | {}".format(text, user_id, message.chat.title, chat_id))
+	if antispam_module:
+		parsing_date = time.mktime(message.date.timetuple())
+		detecting = detect_user(user_id, chat_id, message, parsing_date)
+		if detecting:
+			return True
+		antispam_restrict_user(user_id, parsing_date)
+	if int(user_id) in SPAMMERS:
+		print("This user is spammer!")
+		return True
+	else:
+		return False
