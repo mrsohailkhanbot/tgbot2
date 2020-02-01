@@ -30,7 +30,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id or int(user_id)==777000:
-        message.reply_text("You don't seem to be referring to a user.")
+        message.reply_text("You maybe referring a ghost...refer a user plox")
         return ""
 
     try:
@@ -95,7 +95,7 @@ def temp_ban(bot: Bot, update: Update, args: List[str]) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id or int(user_id)==777000:
-        message.reply_text("You don't seem to be referring to a user.")
+        message.reply_text("You maybe referring a ghost...refer a user plox.")
         return ""
 
     try:
@@ -147,13 +147,13 @@ def temp_ban(bot: Bot, update: Update, args: List[str]) -> str:
     try:
         chat.kick_member(user_id, until_date=bantime)
         bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
-        message.reply_text("Banned! User will be banned for {}.".format(time_val))
+        message.reply_text("Fucked! User will be fucked for {}.".format(time_val))
         return log
 
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text("Banned! User will be banned for {}.".format(time_val), quote=False)
+            message.reply_text("Fucked! User will be fucked for {}.".format(time_val), quote=False)
             return log
         else:
             LOGGER.warning(update)
@@ -177,7 +177,7 @@ def kick(bot: Bot, update: Update, args: List[str]) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id or int(user_id)==777000:
-        message.reply_text("You don't seem to be referring to a user.")
+        message.reply_text("You maybe referring a ghost...refer a user plox.")
         return ""
 
     try:
@@ -217,7 +217,7 @@ def kick(bot: Bot, update: Update, args: List[str]) -> str:
         return log
 
     else:
-        message.reply_text("Well damn, I can't kick that user.")
+        message.reply_text("Well damn, I can't kick his ass.")
 
     return ""
 
@@ -228,14 +228,14 @@ def kick(bot: Bot, update: Update, args: List[str]) -> str:
 def banme(bot: Bot, update: Update):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("Sorry, can't do that")
+        update.effective_message.reply_text("Sorry, can't do that😥")
         return
 
     res = update.effective_chat.kick_member(user_id)  
     if res:
         update.effective_message.reply_text("casting ban spell...wow its working perfectly😉")
     else:
-        update.effective_message.reply_text("Sorry, can't do that")
+        update.effective_message.reply_text("Sorry, can't do that😥")
         
 @run_async
 @bot_admin
@@ -243,14 +243,14 @@ def banme(bot: Bot, update: Update):
 def kickme(bot: Bot, update: Update):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("Sorry, can't do that")
+        update.effective_message.reply_text("Sorry, can't do that😥")
         return
 
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
         update.effective_message.reply_text("Okay...die")
     else:
-        update.effective_message.reply_text("Sorry, can't do that")
+        update.effective_message.reply_text("Sorry, can't do that😥")
 
 
 @run_async
