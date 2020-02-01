@@ -123,8 +123,8 @@ if ALLOW_EXCL:
 	tg.CommandHandler = CustomCommandHandler
 
 # Disable this (line 151) if you dont have a antispam script
-#try:
-	from emilia.antispam import antispam_restrict_user, antispam_cek_user, detect_user
+try:
+	from tg_bot.antispam import antispam_restrict_user, antispam_cek_user, detect_user
 	antispam_module = True
 except ModuleNotFoundError:
 	antispam_module = False
