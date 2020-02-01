@@ -24,4 +24,12 @@ tldextract
 wikipedia
 googletrans
 alphabet_detector
+pynewtonmath
+spongemock
+zalgo-text
+hurry.filesize
+tldextract
+PyYAML
+bleach
+markdown2
 
