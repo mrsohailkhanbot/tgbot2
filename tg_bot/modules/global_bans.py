@@ -63,7 +63,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id or int(user_id)==777000:
-        message.reply_text("You maybe referring a ghost.")
+        message.reply_text("You maybe referring a ghost...refer a user plox")
         return
 
     if int(user_id) in SUDO_USERS:
@@ -85,7 +85,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
         return
 
     if user_chat.type != 'private':
-        message.reply_text("That's not a user!")
+        message.reply_text("That's a ghost!")
         return
 
     if sql.is_user_gbanned(user_id):
