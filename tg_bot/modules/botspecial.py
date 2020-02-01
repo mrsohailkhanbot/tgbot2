@@ -27,8 +27,7 @@ from tg_bot.__main__ import STATS, USER_INFO
 from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.extraction import extract_user
 from tg_bot.modules.helper_funcs.filters import CustomFilters
-from tg_bot.modules.rextester.api import Rextester, CompilerError
-from tg_bot.modules.rextester.langs import languages
+
 
 
 
