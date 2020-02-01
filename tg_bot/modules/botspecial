@@ -42,7 +42,7 @@ from requests import get
 @run_async
 def insults(bot: Bot, update: Update):
     chat = update.effective_chat  # type: Optional[Chat]
-    text = random.choice(tld(chat.id, "INSULTS-K"))
+    text = random.choice((chat.id, "INSULTS-K"))
     update.effective_message.reply_text(text)
 
 
@@ -50,7 +50,7 @@ def insults(bot: Bot, update: Update):
 @run_async
 def runs(bot: Bot, update: Update):
     chat = update.effective_chat  # type: Optional[Chat]
-    update.effective_message.reply_text(random.choice(tld(chat.id, "RUNS-K")))
+    update.effective_message.reply_text(random.choice((chat.id, "RUNS-K")))
 
 
 @user_is_gbanned
@@ -114,7 +114,7 @@ def get_id(bot: Bot, update: Update, args: List[str]):
         if update.effective_message.reply_to_message and update.effective_message.reply_to_message.forward_from:
             user1 = update.effective_message.reply_to_message.from_user
             user2 = update.effective_message.reply_to_message.forward_from
-            update.effective_message.reply_text(tld(chat.id,
+            update.effective_message.reply_text((chat.id,
                 "The original sender, {}, has an ID of `{}`.\nThe forwarder, {}, has an ID of `{}`.").format(
                     escape_markdown(user2.first_name),
                     user2.id,
@@ -152,7 +152,7 @@ def info(bot: Bot, update: Update, args: List[str]):
     elif not msg.reply_to_message and (not args or (
             len(args) >= 1 and not args[0].startswith("@") and not args[0].isdigit() and not msg.parse_entities(
         [MessageEntity.TEXT_MENTION]))):
-        msg.reply_text(tld(chat.id, "I can't extract a user from this."))
+        msg.reply_text((chat.id, "I can't extract a user from this."))
         return
 
     else:
@@ -177,15 +177,15 @@ def info(bot: Bot, update: Update, args: List[str]):
             text += (chat.id, "\nThis person.... He is my god.")
 
         if user.id in SUDO_USERS:
-            text += tld(chat.id, "\nThis person is one of my sudo users! " \
+            text += (chat.id, "\nThis person is one of my sudo users! " \
             "Nearly as powerful as my owner - so watch it.")
         else:
             if user.id in SUPPORT_USERS:
-                text += tld(chat.id, "\nThis person is one of my support users! " \
+                text += (chat.id, "\nThis person is one of my support users! " \
                         "Not quite a sudo user, but can still gban you off the map.")
 
             if user.id in WHITELIST_USERS:
-                text += tld(chat.id, "\nThis person has been whitelisted! " \
+                text += (chat.id, "\nThis person has been whitelisted! " \
                         "That means I'm not allowed to ban/kick them.")
 
     for mod in USER_INFO:
@@ -233,11 +233,11 @@ def reply_keyboard_remove(bot: Bot, update: Update):
 
 @run_async
 def gdpr(bot: Bot, update: Update):
-    update.effective_message.reply_text(tld(update.effective_chat.id, "Deleting identifiable data..."))
+    update.effective_message.reply_text((update.effective_chat.id, "Deleting identifiable data..."))
     for mod in GDPR:
         mod.__gdpr__(update.effective_user.id)
 
-    update.effective_message.reply_text(tld(update.effective_chat.id, "send_gdpr"), parse_mode=ParseMode.MARKDOWN)
+    update.effective_message.reply_text((update.effective_chat.id, "send_gdpr"), parse_mode=ParseMode.MARKDOWN)
 
 
 @user_is_gbanned
