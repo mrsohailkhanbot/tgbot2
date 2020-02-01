@@ -565,7 +565,7 @@ __help__ = """
  - /wiki <keywords>: Get wikipedia articles just using this bot!
 """
 
-__mod_name__ = "Special"
+__mod_name__ = "Special❤️❤️"
 
 ID_HANDLER = DisableAbleCommandHandler("id", get_id, pass_args=True, admin_ok=True)
 IP_HANDLER = CommandHandler("ip", get_bot_ip, filters=Filters.chat(OWNER_ID), admin_ok=True)
