@@ -141,8 +141,4 @@ def spamfilters(text, user_id, chat_id, message):
 		if detecting:
 			return True
 		antispam_restrict_user(user_id, parsing_date)
-	if int(user_id) in SPAMMERS:
-		print("This user is spammer!")
-		return True
-	else:
-		return False
+	
