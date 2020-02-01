@@ -100,7 +100,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
             send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
                      "<b>Casting GBAN Spell</b>" \
                      "\n#GBAN" \
-                     "\n<b>Status:</b> <code>Sending User to hell..Done!</code>" \
+                     "\n<b>Status:</b> <code>Dragging User to hell..Done!</code>" \
                      "\n<b>Sudo Admin:</b> {}" \
                      "\n<b>User:</b> {}" \
                      "\n<b>ID:</b> <code>{}</code>" \
@@ -139,7 +139,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
     send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
                  "<b>Casting GBAN Spell</b>" \
                  "\n#GBAN" \
-                 "\n<b>Status:</b> <code>Sending User to hell..Done!</code>" \
+                 "\n<b>Status:</b> <code>Dragging User to hell..Done!</code>" \
                  "\n<b>Sudo Admin:</b> {}" \
                  "\n<b>User:</b> {}" \
                  "\n<b>ID:</b> <code>{}</code>" \
