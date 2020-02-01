@@ -233,7 +233,7 @@ def banme(bot: Bot, update: Update):
 
     res = update.effective_chat.kick_member(user_id)  
     if res:
-        update.effective_message.reply_text("casting ban spell.")
+        update.effective_message.reply_text("casting ban spell...wow its working perfectly😉")
     else:
         update.effective_message.reply_text("Sorry, can't do that")
         
