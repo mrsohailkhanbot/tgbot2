@@ -345,8 +345,8 @@ def gdpr(bot: Bot, update: Update):
     
     
     
-    @run_async
-def reply_keyboard_remove(bot: Bot, update: Update):
+ @run_async
+ def reply_keyboard_remove(bot: Bot, update: Update):
     reply_keyboard = []
     reply_keyboard.append([
         ReplyKeyboardRemove(
