@@ -240,7 +240,7 @@ def ungban(bot: Bot, update: Update, args: List[str]):
                                                                          user_chat.first_name or "Deleted Account")),
                   html=True)
 
-    message.reply_text("Bringing back this boi from gates of hell...now he is free a bird")
+    message.reply_text("Bringing back this boi from gates of hell...now he is free as bird")
 
 
 @run_async
