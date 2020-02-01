@@ -22,7 +22,7 @@ from tg_bot.modules.sql import users_sql
 from tg_bot.modules.connection import connected
 
 
-from tg_bot.modules.helper_funcs.alternate import send_message
+
 
 
 @run_async
