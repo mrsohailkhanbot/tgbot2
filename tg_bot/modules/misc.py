@@ -345,8 +345,8 @@ def gdpr(bot: Bot, update: Update):
     
     
     
- @run_async
- def reply_keyboard_remove(bot: Bot, update: Update):
+@run_async
+def reply_keyboard_remove(bot: Bot, update: Update):
     reply_keyboard = []
     reply_keyboard.append([
         ReplyKeyboardRemove(
@@ -366,8 +366,6 @@ def gdpr(bot: Bot, update: Update):
         chat_id=update.message.chat_id,
         message_id=old_message.message_id
     )
-
-
 MARKDOWN_HELP = """
 Markdown is a very powerful formatting tool supported by telegram. {} has some enhancements, to make sure that \
 saved messages are correctly parsed, and to allow you to create buttons.
