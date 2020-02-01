@@ -5,9 +5,11 @@ from telegram import Bot, ParseMode, ReplyKeyboardMarkup, KeyboardButton
 from telegram.error import TelegramError
 
 from tg_bot import dispatcher
+
 from telegram.ext import CommandHandler, Filters, MessageHandler, CallbackQueryHandler
 
 import tg_bot.modules.sql.connection_sql as con_sql
+
 
 def keyboard(bot, update):
     user = update.effective_user  # type: Optional[User]
@@ -49,10 +51,9 @@ def keyboard(bot, update):
 
         #TODO: Remove except garbage
 
-    update.effective_message.reply_text("keyboard updated",
+    update.effective_message.reply_text("Keyboard Updated",
                                             reply_markup=ReplyKeyboardMarkup([[
                                                 KeyboardButton("/help - Bot Help"), 
-                                                KeyboardButton("/donate - Donate"),
                                                 KeyboardButton("/notes - Notes")],
                                              [KeyboardButton(btn1)], 
                                              [KeyboardButton(btn2)],
