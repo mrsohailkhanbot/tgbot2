@@ -85,18 +85,18 @@ SLAP_TEMPLATES = (
 )
 
 ITEMS = (
-    "cast iron skillet",
-    "large trout",
+    "car",
+    "Truck",
     "baseball bat",
     "cricket bat",
     "wooden cane",
     "nail",
     "printer",
-    "shovel",
+    "dildo",
     "CRT monitor",
     "physics textbook",
     "toaster",
-    "portrait of Richard Stallman",
+    "portrait of dhinchak pooja",
     "television",
     "five ton truck",
     "roll of duct tape",
