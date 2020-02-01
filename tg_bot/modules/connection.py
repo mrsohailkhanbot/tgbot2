@@ -28,16 +28,16 @@ def allow_connections(bot: Bot, update: Update, args: List[str]) -> str:
             print(var)
             if var == "no":
                 sql.set_allow_connect_to_chat(chat.id, False)
-                update.effective_message.reply_text((chat.id, "Disabled connections to this chat for users"))
+                update.effective_message.reply_text(("Disabled connections to this chat for users"))
             elif var == "yes":
                 sql.set_allow_connect_to_chat(chat.id, True)
-                update.effective_message.reply_text((chat.id, "Enabled connections to this chat for users"))
+                update.effective_message.reply_text(("Enabled connections to this chat for users"))
             else:
-                update.effective_message.reply_text((chat.id, "Please enter on/yes/off/no in group!"))
+                update.effective_message.reply_text(("Please enter on/yes/off/no in group!"))
         else:
-            update.effective_message.reply_text((chat.id, "Please enter on/yes/off/no in group!"))
+            update.effective_message.reply_text(("Please enter on/yes/off/no in group!"))
     else:
-        update.effective_message.reply_text((chat.id, "Please enter on/yes/off/no in group!"))
+        update.effective_message.reply_text(("Please enter on/yes/off/no in group!"))
 
 
 @run_async
@@ -49,7 +49,7 @@ def connect_chat(bot, update, args):
             try:
                 connect_chat = int(args[0])
             except ValueError:
-                update.effective_message.reply_text((chat.id, "Invalid Chat ID provided!"))
+                update.effective_message.reply_text(("Invalid Chat ID provided!"))
                 return
             if (bot.get_chat_member(connect_chat, update.effective_message.from_user.id).status in ('administrator', 'creator') or 
                                      (sql.allow_connect_to_chat(connect_chat) == True) and 
@@ -59,7 +59,7 @@ def connect_chat(bot, update, args):
                 connection_status = sql.connect(update.effective_message.from_user.id, connect_chat)
                 if connection_status:
                     chat_name = dispatcher.bot.getChat(connected(bot, update, chat, user.id, need_admin=False)).title
-                    update.effective_message.reply_text((chat.id, "Successfully connected to *{}*").format(chat_name), parse_mode=ParseMode.MARKDOWN)
+                    update.effective_message.reply_text(("Successfully connected to *{}*").format(chat_name), parse_mode=ParseMode.MARKDOWN)
 
                     #Add chat to connection history
                     history = sql.get_history(user.id)
@@ -97,11 +97,11 @@ def connect_chat(bot, update, args):
                     keyboard(bot, update)
 
                 else:
-                    update.effective_message.reply_text((chat.id, "Connection failed!"))
+                    update.effective_message.reply_text("Connection failed!")
             else:
-                update.effective_message.reply_text((chat.id, "Connections to this chat not allowed!"))
+                update.effective_message.reply_text("Connections to this chat not allowed!")
         else:
-            update.effective_message.reply_text((chat.id, "Input chat ID to connect!"))
+            update.effective_message.reply_text("Input chat ID to connect!")
             history = sql.get_history(user.id)
             # print(history.user_id, history.chat_id1, history.chat_id2, history.chat_id3, history.updated)
 
@@ -117,10 +117,10 @@ def connect_chat(bot, update, args):
                 update.effective_message.reply_text((chat.id, "Failed to connect to *{}*").format(chat.id),
                                                     parse_mode=ParseMode.MARKDOWN)
         else:
-            update.effective_message.reply_text((chat.id, "You are not admin!"))
+            update.effective_message.reply_text(chat.id, "You are not admin!")
 
     else:
-        update.effective_message.reply_text((chat.id, "Usage is limited to PMs only!"))
+        update.effective_message.reply_text(chat.id, "Usage is limited to PMs only!")
 
 
 def disconnect_chat(bot, update):
