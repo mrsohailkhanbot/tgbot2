@@ -9,6 +9,7 @@ from telegram import Message, Chat, Update, Bot, MessageEntity
 from telegram import ParseMode
 from telegram.ext import CommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown, mention_html
+from telegram import ParseMode, ReplyKeyboardRemove, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 
 from tg_bot import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, WHITELIST_USERS, BAN_STICKER
 from tg_bot.__main__ import GDPR
@@ -341,6 +342,30 @@ def gdpr(bot: Bot, update: Update):
                                         "\"for the performance of a task carried out in the public interest\", as is "
                                         "the case for the aforementioned pieces of data.",
                                         parse_mode=ParseMode.MARKDOWN)
+    
+    
+    
+    @run_async
+def reply_keyboard_remove(bot: Bot, update: Update):
+    reply_keyboard = []
+    reply_keyboard.append([
+        ReplyKeyboardRemove(
+            remove_keyboard=True
+        )
+    ])
+    reply_markup = ReplyKeyboardRemove(
+        remove_keyboard=True
+    )
+    old_message = bot.send_message(
+        chat_id=update.message.chat_id,
+        text='trying',
+        reply_markup=reply_markup,
+        reply_to_message_id=update.message.message_id
+    )
+    bot.delete_message(
+        chat_id=update.message.chat_id,
+        message_id=old_message.message_id
+    )
 
 
 MARKDOWN_HELP = """
@@ -389,6 +414,7 @@ __help__ = """
  - /slap: slap a user, or get slapped if not a reply.
  - /info: get information about a user.
  - /gdpr: deletes your information from the bot's database. Private chats only.
+ - /removebotkeyboard: Got a nasty bot keyboard stuck in your group?
 
  - /markdownhelp: quick summary of how markdown works in telegram - can only be called in private chats.
 """
@@ -420,3 +446,4 @@ dispatcher.add_handler(ECHO_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 dispatcher.add_handler(STATS_HANDLER)
 dispatcher.add_handler(GDPR_HANDLER)
+dispatcher.add_handler(DisableAbleCommandHandler("removebotkeyboard", reply_keyboard_remove))
