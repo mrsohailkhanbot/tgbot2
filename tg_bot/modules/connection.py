@@ -111,16 +111,16 @@ def connect_chat(bot, update, args):
 
             connection_status = sql.connect(update.effective_message.from_user.id, connect_chat)
             if connection_status:
-                update.effective_message.reply_text((chat.id, "Succesfully connected to *{}*").format(chat.id),
+                update.effective_message.reply_text(("Succesfully connected to *{}*").format(chat.id),
                                                     parse_mode=ParseMode.MARKDOWN)
             else:
-                update.effective_message.reply_text((chat.id, "Failed to connect to *{}*").format(chat.id),
+                update.effective_message.reply_text(("Failed to connect to *{}*").format(chat.id),
                                                     parse_mode=ParseMode.MARKDOWN)
         else:
-            update.effective_message.reply_text(chat.id, "You are not admin!")
+            update.effective_message.reply_text("You are not admin!")
 
     else:
-        update.effective_message.reply_text(chat.id, "Usage is limited to PMs only!")
+        update.effective_message.reply_text("Usage is limited to PMs only!")
 
 
 def disconnect_chat(bot, update):
