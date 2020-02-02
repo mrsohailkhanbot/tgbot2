@@ -63,15 +63,15 @@ def gban(bot: Bot, update: Update, args: List[str]):
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id or int(user_id)==777000:
-        message.reply_text("You maybe referring a ghost...refer a user plox")
+        message.reply_text("You don't seem to be referring to a user.")
         return
 
     if int(user_id) in SUDO_USERS:
-        message.reply_text("Giving you a chance to kiss ...i won't see 😂!")
+        message.reply_text("Now kiss each other!")
         return
 
     if int(user_id) in SUPPORT_USERS:
-        message.reply_text("OOOH someone's trying to gban a support user! *shame on you*")
+        message.reply_text("OOOH someone's trying to gban a support user! *grabs popcorn*")
         return
 
     if user_id == bot.id:
@@ -85,7 +85,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
         return
 
     if user_chat.type != 'private':
-        message.reply_text("That's a ghost!")
+        message.reply_text("That's not a user!")
         return
 
     if sql.is_user_gbanned(user_id):
@@ -98,9 +98,9 @@ def gban(bot: Bot, update: Update, args: List[str]):
         if old_reason:
             banner = update.effective_user  # type: Optional[User]
             send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
-                     "<b>Casting GBAN Spell</b>" \
+                     "<b>Emendation of Global Ban</b>" \
                      "\n#GBAN" \
-                     "\n<b>Status:</b> <code>Dragging User to hell..Done!</code>" \
+                     "\n<b>Status:</b> <code>Amended</code>" \
                      "\n<b>Sudo Admin:</b> {}" \
                      "\n<b>User:</b> {}" \
                      "\n<b>ID:</b> <code>{}</code>" \
@@ -110,14 +110,14 @@ def gban(bot: Bot, update: Update, args: List[str]):
                                                            user_chat.id, old_reason, new_reason), 
                     html=True)
                 
-            message.reply_text("This user is already in hell, for the following reason:\n"
+            message.reply_text("This user is already gbanned, for the following reason:\n"
                                "<code>{}</code>\n"
                                "I've gone and updated it with your new reason!".format(html.escape(old_reason)),
                                parse_mode=ParseMode.HTML)
         else:
             banner = update.effective_user  # type: Optional[User]
             send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
-                     "<b>Casting GBAN Spell</b>" \
+                     "<b>Emendation of Global Ban</b>" \
                      "\n#GBAN" \
                      "\n<b>Status:</b> <code>New reason</code>" \
                      "\n<b>Sudo Admin:</b> {}" \
@@ -127,19 +127,19 @@ def gban(bot: Bot, update: Update, args: List[str]):
                                               mention_html(user_chat.id, user_chat.first_name or "Deleted Account"), 
                                                            user_chat.id, new_reason), 
                     html=True)
-            message.reply_text("This user is already wasting his life hell, but without reason; But now i have updated it!")
+            message.reply_text("This user is already gbanned, but had no reason set; I've gone and updated it!")
 
         return
 
-    starting = "Using my most powerful spell for {}... ".format(mention_html(user_chat.id, user_chat.first_name or "Deleted Account"))
+    starting = "Initiating global ban for {}...".format(mention_html(user_chat.id, user_chat.first_name or "Deleted Account"))
     keyboard = []
     # message.reply_text(starting, reply_markup=keyboard, parse_mode=ParseMode.HTML)
     
     banner = update.effective_user  # type: Optional[User]
     send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
-                 "<b>Casting GBAN Spell</b>" \
+                 "<b>Global Ban</b>" \
                  "\n#GBAN" \
-                 "\n<b>Status:</b> <code>Dragging User to hell..Done!</code>" \
+                 "\n<b>Status:</b> <code>Enforcing</code>" \
                  "\n<b>Sudo Admin:</b> {}" \
                  "\n<b>User:</b> {}" \
                  "\n<b>ID:</b> <code>{}</code>" \
@@ -174,7 +174,7 @@ def gban(bot: Bot, update: Update, args: List[str]):
     send_to_list(bot, SUDO_USERS + SUPPORT_USERS, 
                   "{} has been successfully gbanned!".format(mention_html(user_chat.id, user_chat.first_name or "Deleted Account")),
                 html=True)
-    message.reply_text("my gban spell is working now 😉 ")
+    message.reply_text("Person has been gbanned.")
 
 
 @run_async
@@ -200,9 +200,9 @@ def ungban(bot: Bot, update: Update, args: List[str]):
     # message.reply_text("{}, will be unbanned globally.".format(user_chat.first_name or "Deleted Account"))
 
     send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
-                 "<b>Removing my gban spell</b>" \
+                 "<b>Regression of Global Ban</b>" \
                  "\n#UNGBAN" \
-                 "\n<b>Status:</b> <code>Bringing user back from hell...Done</code>" \
+                 "\n<b>Status:</b> <code>Ceased</code>" \
                  "\n<b>Sudo Admin:</b> {}" \
                  "\n<b>User:</b> {}" \
                  "\n<b>ID:</b> <code>{}</code>".format(mention_html(banner.id, banner.first_name),
@@ -240,7 +240,7 @@ def ungban(bot: Bot, update: Update, args: List[str]):
                                                                          user_chat.first_name or "Deleted Account")),
                   html=True)
 
-    message.reply_text("Bringing back this boi from gates of hell...now he is free as bird")
+    message.reply_text("Person has been un-gbanned.")
 
 
 @run_async
@@ -267,7 +267,7 @@ def check_and_ban(update, user_id, should_message=True):
     if sql.is_user_gbanned(user_id):
         update.effective_chat.kick_member(user_id)
         if should_message:
-            update.effective_message.reply_text("This user was globally fucked by my owner or one of my sudo/support users so sending him to hell!")
+            update.effective_message.reply_text("This user was globally banned by my owner or one of my sudo/support users so it shouldn't be here!")
 
 
 @run_async
@@ -298,13 +298,13 @@ def gbanstat(bot: Bot, update: Update, args: List[str]):
     if len(args) > 0:
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gbans(update.effective_chat.id)
-            update.effective_message.reply_text("I've enabled my protection spell in this group. This will help protect you "
-                                                "from chutiyas, assholes, and the biggest noobs.")
+            update.effective_message.reply_text("I've enabled gbans in this group. This will help protect you "
+                                                "from spammers, unsavoury characters, and the biggest trolls.")
         elif args[0].lower() in ["off", "no"]:
             sql.disable_gbans(update.effective_chat.id)
-            update.effective_message.reply_text("I've disabled my protection spell in this group. GBans wont affect your users "
+            update.effective_message.reply_text("I've disabled gbans in this group. GBans wont affect your users "
                                                 "anymore. You'll be less protected from any trolls and spammers "
-                                                "though 😔!")
+                                                "though!")
     else:
         update.effective_message.reply_text("Give me some arguments to choose a setting! on/off, yes/no!\n\n"
                                             "Your current setting is: {}\n"
