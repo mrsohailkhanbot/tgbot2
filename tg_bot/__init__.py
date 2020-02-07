@@ -45,10 +45,10 @@ if ENV:
 
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
     URL = os.environ.get('URL', "")  # Does not contain token
-    PORT = int(os.environ.get('PORT', 5000))
+    PORT = int(os.environ.get('PORT', 5432))
     CERT_PATH = os.environ.get("CERT_PATH")
 
-    DB_URI = os.environ.get('HEROKU_POSTGRESQL_GRAY_URL')
+    DB_URI = os.environ.get('DATABASE_URL')
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
