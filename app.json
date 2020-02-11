@@ -80,7 +80,7 @@
    "addons":[
       {
          "plan":"heroku-postgresql",
-         "options":{
+         "optons":{
             "version":"9.5"
          }
       }
